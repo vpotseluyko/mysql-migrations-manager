@@ -1,0 +1,19 @@
+{
+  "name": "mysql-migrations-manager",
+  "version": "1.0.0",
+  "description": "Easy configurable MySQL Migrations Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mysql",
+    "migrations"
+  ],
+  "author": "vpotseluyko",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.15.0",
+    "mysqldump": "^1.4.2"
+  }
+}
