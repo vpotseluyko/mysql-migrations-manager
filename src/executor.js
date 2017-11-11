@@ -3,7 +3,7 @@ const path = require('path');
 
 async function executor(version, migrations, mysql, mdump, backups, table) {
     if (migrations.length === version) {
-        console.log(`DB is latest(${version}) version`);
+        console.log(`DB has version ${version}`);
         return true;
     }
     console.log(`Backing up version ${version}`);

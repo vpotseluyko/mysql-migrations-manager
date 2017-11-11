@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const mysqldump = require('mysqldump');
 const promisify = require('util').promisify;
-const spawn = require('child_process').spawn;
+const {spawn, exec} = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -20,6 +20,8 @@ function createMysqlClient(host, database, login, password) {
 }
 
 module.exports = createMysqlClient;
+
+module.exports.mysqldump = createMysqlDumpClient;
 
 function createMysqlDumpClient(host, database, login, password) {
     return async function (filename) {
@@ -40,4 +42,22 @@ function createMysqlDumpClient(host, database, login, password) {
     }
 }
 
-module.exports.mysqldump = createMysqlDumpClient;
+
+function restoreDump(host, database, login, password) {
+    return async function (file) {
+        return new Promise((res, rej) => {
+            const rebuild_db = `mysql -u ${login} -h ${host} -p${password} ${database} < ${file}`;
+            exec(rebuild_db, function (error, stdout, stderr) {
+                if (error !== null) {
+                    rej(error)
+                } else {
+                    console.log('Successfully Rebuild Database using: ');
+                    console.log('   ' + file);
+                    res();
+                }
+            });
+        });
+    };
+}
+
+module.exports.flashDump = restoreDump;

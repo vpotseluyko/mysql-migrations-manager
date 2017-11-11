@@ -1,5 +1,5 @@
 {
-  "name": "mysql-migrations-manager",
+  "name": "mygrator",
   "version": "1.0.0",
   "description": "Easy configurable MySQL Migrations Manager",
   "main": "index.js",
@@ -11,6 +11,7 @@
     "migrations"
   ],
   "author": "vpotseluyko",
+  "preferGlobal": true,
   "license": "ISC",
   "dependencies": {
     "mysql": "^2.15.0",
