@@ -1,8 +1,10 @@
-const configReader = require('./../src/configReader');
-const mysqlClient = require('./../src/mysqlClient');
-const defaultStructure = require('./../src/defaultStructure');
-const migrationsReader = require('./../src/migrationsReader');
-const executor = require('./../src/executor');
+#!/usr/bin/env node
+
+const configReader = require('./../lib/configReader');
+const mysqlClient = require('./../lib/mysqlClient');
+const defaultStructure = require('./../lib/defaultStructure');
+const migrationsReader = require('./../lib/migrationsReader');
+const executor = require('./../lib/executor');
 const path = require('path');
 const fs = require("fs");
 
