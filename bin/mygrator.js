@@ -115,7 +115,7 @@ const showHelp = () => {
                 console.log(`Backup saved to ${backupPath}`);
                 break;
             case 'setup':
-                const conf = fs.readFileSync(__dirname + '/../migrator.conf.js');
+                const conf = fs.readFileSync(path.resolve(process.mainModule.paths[0], '..', '..', 'migrator.conf.js'));
                 fs.writeFileSync(path.resolve(process.cwd(), 'migrator.conf.js'), conf);
                 break;
             case 'help':

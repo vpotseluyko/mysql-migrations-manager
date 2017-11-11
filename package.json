@@ -1,6 +1,6 @@
 {
   "name": "mygrator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Easy configurable MySQL Migrations Manager",
   "main": "index.js",
   "scripts": {
