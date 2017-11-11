@@ -10,6 +10,9 @@
     "mysql",
     "migrations"
   ],
+  "bin": {
+    "mygrator": "bin/mygrator.js"
+  },
   "author": "vpotseluyko",
   "preferGlobal": true,
   "license": "ISC",
