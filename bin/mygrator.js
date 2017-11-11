@@ -19,6 +19,7 @@ const showHelp = () => {
     console.log('upgrade   - upgrades DB to latest available ');
     console.log('          - show all migrations');
     console.log('backup    - backups current DB version');
+    console.log('setup     - create migrator.conf.js in current dir');
 };
 
 (async () => {
@@ -109,6 +110,9 @@ const showHelp = () => {
                 await mdump(backupPath);
                 console.log(`Backup saved to ${backupPath}`);
                 break;
+            case 'setup':
+                const conf = fs.readFileSync(__dirname + '/../migrator.conf.js');
+                fs.writeFileSync(path.resolve(process.cwd(), 'migrator.conf.js'), conf);
             default:
                 showHelp();
                 break;

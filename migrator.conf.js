@@ -3,21 +3,21 @@ module.exports = {
     // if null left is localhost
     host: null,
 
-    database: 'ilinbot',
+    database: 'example',
 
-    login: 'superuser',
+    login: 'root',
 
-    password: '112233',
+    password: '',
 
     /**
      * table where migrator will store it's update logs
      */
-    table: 'ma_migrations',
+    table: 'migrations',
 
     /**
      * folder where migrations file must be found
      */
-    migrationsFolder: 'test',
+    migrationsFolder: 'migrations',
 
     /**
      * folder where migrator shall store DB backups
