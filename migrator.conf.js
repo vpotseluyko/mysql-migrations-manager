@@ -22,13 +22,13 @@ module.exports = {
     /**
      * folder where migrator shall store DB backups
      */
-    backupsFolder: '',
+    backupsFolder: 'backups',
 
     /**
      * if turned on migrator will base on numbers in filenames.
      * Format of names it totally up to you, be careful!
      */
-    flashDepenedingOnFilename: false,
+    flashDepenedingOnFilename: true,
 
     /**
      * Array of migrations files with order

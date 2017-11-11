@@ -20,12 +20,13 @@ const executor = require('./../src/executor');
         } else {
             migrationsReader.provided(migrations, config.migrationsFolder, config.migrations);
         }
-        console.log(migrations);
+        // console.log(migrations);
 
-        await executor(version, migrations, mysql, mdump);
+        await executor(version, migrations, mysql, mdump, config.backupsFolder, config.table);
 
         process.exit(0);
     } catch (err) {
+        console.log('Migrator exited with message:');
         console.error(err.message);
         process.exit(1);
     }

@@ -1,6 +1,9 @@
 const mysql = require('mysql');
 const mysqldump = require('mysqldump');
 const promisify = require('util').promisify;
+const spawn = require('child_process').spawn;
+const fs = require('fs');
+const path = require('path');
 
 function createMysqlClient(host, database, login, password) {
     const client = mysql.createConnection({
@@ -20,15 +23,20 @@ module.exports = createMysqlClient;
 
 function createMysqlDumpClient(host, database, login, password) {
     return async function (filename) {
-        return new Promise((res, rej) => {
-            mysqldump({
-                host:     host || '127.0.0.1',
-                user:     login,
-                password: password,
-                database: database,
-                dest:     filename // destination file
-            }, e => e ? rej(err) : res(true))
-        });
+        return new Promise((resolve, reject) => {
+            const mysqldump = spawn('mysqldump', [
+                '-u', login,
+                `-p${password}`,
+                database
+            ]);
+            const file = fs.createWriteStream(path.resolve(process.cwd(), filename));
+            mysqldump
+                .stdout
+                .pipe(file)
+                .on('finish', resolve)
+                .on('error', e => reject(e));
+        })
+
     }
 }
 
