@@ -113,6 +113,7 @@ const showHelp = () => {
             case 'setup':
                 const conf = fs.readFileSync(__dirname + '/../migrator.conf.js');
                 fs.writeFileSync(path.resolve(process.cwd(), 'migrator.conf.js'), conf);
+                break;
             default:
                 showHelp();
                 break;
