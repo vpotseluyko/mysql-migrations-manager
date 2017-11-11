@@ -63,7 +63,7 @@ const showHelp = () => {
             case 'list':
                 if (process.argv[3] === 'new') {
                     for (let i = 0; i < migrations.length; i++) {
-                        if (i + 1 <= version) {
+                        if (migrations[i].version <= version) {
                             migrations.splice(i, 1);
                             i = -1;
                         }
