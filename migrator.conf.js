@@ -36,9 +36,5 @@ module.exports = {
      * Is used only when flashDepenedingOnFilename is false
      */
     migrations: [
-        '1a.sql',
-        '2b.sql',
-        'b3.sql',
-        'a4.sql'
     ]
 };
