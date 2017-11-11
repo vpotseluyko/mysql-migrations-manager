@@ -24,6 +24,10 @@ const showHelp = () => {
 
 (async () => {
     try {
+        if (typeof process.argv[2] === 'undefined') {
+            showHelp();
+            process.exit(0);
+        }
         const config = configReader();
 
         const mysql = mysqlClient(config.host, config.database, config.login, config.password);
@@ -114,6 +118,7 @@ const showHelp = () => {
                 const conf = fs.readFileSync(__dirname + '/../migrator.conf.js');
                 fs.writeFileSync(path.resolve(process.cwd(), 'migrator.conf.js'), conf);
                 break;
+            case 'help':
             default:
                 showHelp();
                 break;
