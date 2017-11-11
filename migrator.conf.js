@@ -3,11 +3,11 @@ module.exports = {
     // if null left is localhost
     host: null,
 
-    database: 'example',
+    database: 'ilinbot',
 
-    login: 'root',
+    login: 'superuser',
 
-    password: '',
+    password: '112233',
 
     /**
      * table where migrator will store it's update logs
