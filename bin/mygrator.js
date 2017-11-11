@@ -28,6 +28,13 @@ const showHelp = () => {
             showHelp();
             process.exit(0);
         }
+        if (process.argv[2] === 'setup') {
+            const conf = fs.readFileSync(path.resolve(process.mainModule.paths[0], '..', '..', 'migrator.conf.js'));
+            fs.writeFileSync(path.resolve(process.cwd(), 'migrator.conf.js'), conf);
+            console.log('Successfully created');
+            return;
+        }
+
         const config = configReader();
 
         const mysql = mysqlClient(config.host, config.database, config.login, config.password);
@@ -113,10 +120,6 @@ const showHelp = () => {
                 console.log(`Starting backup of DB version ${version}`);
                 await mdump(backupPath);
                 console.log(`Backup saved to ${backupPath}`);
-                break;
-            case 'setup':
-                const conf = fs.readFileSync(path.resolve(process.mainModule.paths[0], '..', '..', 'migrator.conf.js'));
-                fs.writeFileSync(path.resolve(process.cwd(), 'migrator.conf.js'), conf);
                 break;
             case 'help':
             default:
